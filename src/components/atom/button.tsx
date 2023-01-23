@@ -1,16 +1,22 @@
-import styles from "./button.module.scss";
+import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
+import classes from "./button.module.scss";
 
-interface Props {
-  disabled?: boolean;
-  children?: React.ReactNode;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+export interface ButtonProps
+  extends DetailedHTMLProps<
+    ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {
+  className: string;
 }
 
-const Button = ({ disabled, children, onClick }: Props) => {
+const Button = (props: ButtonProps) => {
   return (
-    <button disabled={disabled} onClick={onClick} className={styles.btn}>
-      {children}
-    </button>
+    <button
+      {...props}
+      className={`${classes.btn} ${
+        props.className === "btn--active" ? classes["btn--active"] : ""
+      }`}
+    />
   );
 };
 

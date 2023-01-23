@@ -1,5 +1,10 @@
 .btn {
+  width: 200px;
   background: black;
   color: white;
   padding: 2rem;
+  &.btn--active {
+    background: red;
+    color: black;
+  }
 }

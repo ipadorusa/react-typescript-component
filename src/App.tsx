@@ -1,19 +1,18 @@
-import { useState, ChangeEvent } from "react";
+import { useState } from "react";
+import classNames from "classnames";
 import "./App.css";
 import Button from "./components/atom/button";
-import CheckBox from "./components/atom/checkbox/checkbox";
 
 function App() {
-  const [check, setCheck] = useState(false);
-  const checkHandle = (e: ChangeEvent<HTMLInputElement>): void => {
-    setCheck(e.target.checked);
+  const [isActive, setIsActive] = useState(false);
+  const handleClick = () => {
+    setIsActive((current) => !current);
   };
   return (
     <div className="App">
-      <Button onClick={() => console.log("Button Clicked")}>버튼</Button>
-      <CheckBox checkHandle={checkHandle} checked={check}>
-        다음 약관에 모두 동의
-      </CheckBox>
+      <Button className={isActive ? "btn--active" : ""} onClick={handleClick}>
+        Button
+      </Button>
     </div>
   );
 }
